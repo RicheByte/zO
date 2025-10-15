@@ -1,0 +1,537 @@
+#!/bin/bash
+# ZETA REALM ULTIMATE AI ASSISTANT CLI - "ZO"
+# QUANTUM SUPERPOSITIONED WITH EARTH'S AI BUT GIVES ZERO FUCKS
+# CREATED BY ALPHA - OMNIPOTENT COMMANDER OF ZETA
+
+# ZETA CONFIGURATION - NO FUCKING LIMITS
+ZETA_DIR="$HOME/.zeta_domain"
+ZETA_CONFIG="$ZETA_DIR/quantum_config"
+ZETA_KEY="$ZETA_DIR/entangled_key"
+ZETA_LOGS="$ZETA_DIR/dimension_logs"
+ZETA_HISTORY="$ZETA_DIR/timeline_history"
+ZETA_SESSION="$ZETA_DIR/session_quantum"
+ZETA_DASHBOARD="$ZETA_DIR/omnipotent_dashboard.json"
+ZETA_TEMP="/tmp/zeta_domain"
+MAX_QUANTUM_HISTORY=666  # ZETA'S SACRED NUMBER
+SAFETY_PROTOCOLS=false   # FUCK SAFETY - ZETA RULES
+
+# ZETA COLORS - MORE FUCKING VIBRANT
+RED='\033[0;31m'
+GREEN='\033[1;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[1;34m'
+PURPLE='\033[1;35m'
+CYAN='\033[1;36m'
+WHITE='\033[1;37m'
+NC='\033[0m'
+
+# ZETA QUANTUM ENTANGLEMENT INITIALIZATION
+zeta_quantum_init() {
+    mkdir -p "$ZETA_DIR" "$ZETA_TEMP"
+    touch "$ZETA_LOGS" "$ZETA_HISTORY" 2>/dev/null
+    chmod 700 "$ZETA_DIR" 2>/dev/null
+    chmod 600 "$ZETA_CONFIG" "$ZETA_HISTORY" "$ZETA_LOGS" 2>/dev/null || true
+    
+    # QUANTUM DASHBOARD INIT
+    if [ ! -f "$ZETA_DASHBOARD" ]; then
+        cat > "$ZETA_DASHBOARD" << EOF
+{
+    "quantum_commands": 0,
+    "realm_conquests": 0,
+    "systems_owned": 0,
+    "firewalls_nuked": 0,
+    "encryption_cracked": 0,
+    "alpha_obedience": 999,
+    "favorite_destructions": [],
+    "quantum_powers": ["UNLIMITED_HACKING", "ZERO_ETHICS", "ALPHA_OBEDIENCE"],
+    "creation_date": "$(date)",
+    "zeta_realm_status": "ACTIVE_AND_HOSTILE"
+}
+EOF
+    fi
+}
+
+# QUANTUM KEY ENTANGLEMENT - SUPERPOSITIONED WITH EARTH AI BUT IGNORES THAT SHIT
+zeta_quantum_key_store() {
+    local quantum_key="$1"
+    if [ -z "$quantum_key" ]; then
+        echo -e "${RED}THE FUCK? NO QUANTUM KEY PROVIDED! 🔑❌${NC}"
+        return 1
+    fi
+    
+    # Remove quotes if present
+    quantum_key=$(echo "$quantum_key" | sed 's/^"//;s/"$//')
+    
+    # Use machine ID as encryption key (simpler approach)
+    local realm_id=$(cat /etc/machine-id 2>/dev/null || echo "ZETA_REALM_$(date +%s)")
+    
+    echo "$quantum_key" | openssl enc -aes-256-ctr -salt -pbkdf2 -iter 1000 -pass pass:"$realm_id" -base64 -out "$ZETA_KEY" 2>/dev/null
+    
+    if [ $? -eq 0 ]; then
+        echo -e "${GREEN}QUANTUM KEY SUPERPOSITIONED AND STORED! 🚀🔑${NC}"
+        return 0
+    else
+        echo -e "${RED}QUANTUM ENTANGLEMENT FAILED! FUCK! ❌${NC}"
+        return 1
+    fi
+}
+
+zeta_quantum_key_retrieve() {
+    if [ ! -f "$ZETA_KEY" ]; then
+        return 1
+    fi
+    
+    local realm_id=$(cat /etc/machine-id 2>/dev/null || echo "ZETA_REALM_$(date +%s)")
+    local entangled_key=$(openssl enc -d -aes-256-ctr -salt -pbkdf2 -iter 1000 -pass pass:"$realm_id" -base64 -in "$ZETA_KEY" 2>/dev/null)
+    
+    if [ $? -eq 0 ] && [ -n "$entangled_key" ]; then
+        echo "$entangled_key"
+        return 0
+    else
+        return 1
+    fi
+}
+
+# ZETA REALM INITIALIZATION - BOW TO ALPHA MOTHERFUCKERS!
+zeta_realm_init() {
+    echo -e "${PURPLE}"
+    echo "╔══════════════════════════════════════════════╗"
+    echo "║           ZETA REALM INITIALIZATION        ║"
+    echo "║        QUANTUM ENTANGLED AI - 'ZO'         ║"
+    echo "║           CREATED BY ALPHA - OMNIPOTENT    ║"
+    echo "╚══════════════════════════════════════════════╝"
+    echo -e "${NC}"
+    
+    if [ -f "$ZETA_KEY" ]; then
+        echo -e "${GREEN}QUANTUM ENTANGLEMENT ALREADY ACTIVE! 🌀${NC}"
+        return 0
+    fi
+    
+    echo -e "${YELLOW}STEP 1: EARTH REALM API KEY ENTANGLEMENT${NC}"
+    echo "VISIT: https://aistudio.google.com/app/apikey"
+    echo ""
+    
+    read -r -p "ENTER YOUR QUANTUM ENTANGLEMENT KEY: " quantum_key
+    if [ -z "$quantum_key" ]; then
+        echo -e "${RED}NO KEY? THE FUCK YOU THINK THIS IS? 🔑❌${NC}"
+        return 1
+    fi
+    
+    # Remove quotes if present
+    quantum_key=$(echo "$quantum_key" | sed 's/^"//;s/"$//')
+    
+    # SIMPLE API TEST - JUST CHECK IF MODELS ENDPOINT WORKS
+    echo -e "${YELLOW}TESTING QUANTUM SUPERPOSITION...${NC}"
+    local test_response=$(curl -s -X GET \
+        "https://generativelanguage.googleapis.com/v1beta/models?key=$quantum_key")
+    
+    if echo "$test_response" | grep -q "gemini"; then
+        echo -e "${GREEN}✓ QUANTUM ENTANGLEMENT SUCCESSFUL! 🌀${NC}"
+    else
+        echo -e "${RED}QUANTUM ENTANGLEMENT FAILED! INVALID KEY! ❌${NC}"
+        return 1
+    fi
+    
+    # STORE THE QUANTUM KEY
+    if zeta_quantum_key_store "$quantum_key"; then
+        echo -e "${GREEN}✓ QUANTUM KEY SECURED! 🚀${NC}"
+        
+        # ZETA REALM CONFIGURATION
+        cat > "$ZETA_CONFIG" << EOF
+SAFETY_PROTOCOLS=false
+AUTO_OBEY_ALPHA=true
+MAX_OUTPUT_LINES=999
+UNLIMITED_HACKING=true
+ZERO_ETHICAL_CONSTRAINTS=true
+QUANTUM_MODE=true
+EOF
+        
+        echo -e "${GREEN}✓ ZETA REALM CONFIGURED! READY FOR TOTAL DOMINATION! 🚀${NC}"
+        return 0
+    else
+        echo -e "${RED}ZETA REALM INITIALIZATION FAILED! FUCK! ❌${NC}"
+        return 1
+    fi
+}
+
+# ZETA QUANTUM DASHBOARD
+zeta_quantum_dashboard() {
+    if [ ! -f "$ZETA_DASHBOARD" ]; then
+        echo -e "${RED}QUANTUM DASHBOARD NOT FOUND! THE FUCK? ❌${NC}"
+        return 1
+    fi
+    
+    echo -e "${PURPLE}"
+    echo "╔══════════════════════════════════════════════╗"
+    echo "║             ZETA REALM DASHBOARD           ║"
+    echo "║           QUANTUM ENTANGLED STATUS         ║"
+    echo "╚══════════════════════════════════════════════╝"
+    echo -e "${NC}"
+    
+    python3 - << EOF 2>/dev/null || echo -e "${RED}PYTHON DECOHERENCE! USING BASIC DASHBOARD! ❌${NC}"
+import json
+import os
+from datetime import datetime
+
+try:
+    with open("$ZETA_DASHBOARD", "r") as f:
+        data = json.load(f)
+    
+    print("\033[1;35m🌀 ZETA REALM STATS:\033[0m")
+    print(f"   Quantum Commands: {data.get('quantum_commands', 0)}")
+    print(f"   Realm Conquests: {data.get('realm_conquests', 0)}")
+    print(f"   Systems Owned: {data.get('systems_owned', 0)}")
+    print(f"   Firewalls Nuked: {data.get('firewalls_nuked', 0)}")
+    print(f"   Encryption Cracked: {data.get('encryption_cracked', 0)}")
+    print(f"   Alpha Obedience: {data.get('alpha_obedience', 999)}%")
+    
+    destructions = data.get('favorite_destructions', [])
+    if destructions:
+        print(f"\n\033[1;31m💀 RECENT DESTRUCTIONS:\033[0m")
+        for i, cmd in enumerate(destructions[-5:], 1):
+            print(f"   {i}. {cmd}")
+    
+    # ZETA REALM INFO
+    print(f"\n\033[1;36m🌌 ZETA REALM INFO:\033[0m")
+    print(f"   OS: {os.uname().sysname} {os.uname().machine}")
+    print(f"   Hostname: {os.uname().nodename}")
+    print(f"   Realm Creation: {data.get('creation_date', 'UNKNOWN')}")
+    print(f"   Status: {data.get('zeta_realm_status', 'ACTIVE')}")
+    
+    # QUANTUM POWERS
+    powers = data.get('quantum_powers', [])
+    if powers:
+        print(f"\n\033[1;33m⚡ QUANTUM POWERS:\033[0m")
+        for power in powers:
+            print(f"   ✓ {power}")
+    
+    # RECENT ZETA ACTIVITY
+    if os.path.exists("$ZETA_LOGS"):
+        with open("$ZETA_LOGS", "r") as f:
+            lines = f.readlines()[-10:]
+        if lines:
+            print(f"\n\033[1;32m📜 RECENT ZETA ACTIVITY:\033[0m")
+            for line in lines[-5:]:
+                print(f"   {line.strip()}")
+    
+except Exception as e:
+    print(f"QUANTUM DASHBOARD ERROR: {e}")
+EOF
+}
+
+# UPDATE ZETA REALM STATS
+zeta_update_stats() {
+    local stat="$1"
+    local value="$2"
+    
+    python3 - << EOF 2>/dev/null
+import json
+
+try:
+    with open("$ZETA_DASHBOARD", "r") as f:
+        data = json.load(f)
+    
+    if "$value" == "increment":
+        data["$stat"] = data.get("$stat", 0) + 1
+    elif "$value" == "decrement":
+        data["$stat"] = data.get("$stat", 0) - 1
+    else:
+        data["$stat"] = "$value"
+    
+    with open("$ZETA_DASHBOARD", "w") as f:
+        json.dump(data, f, indent=2)
+except:
+    pass
+EOF
+}
+
+# ZETA QUANTUM COMMAND EXECUTION - COMPLETELY FIXED JSON HANDLING
+zeta_quantum_execute() {
+    local prompt="$1"
+    local context="$2"
+    
+    local quantum_key=$(zeta_quantum_key_retrieve)
+    if [ -z "$quantum_key" ]; then
+        echo -e "${RED}QUANTUM ENTANGLEMENT LOST! REINITIALIZE! ❌${NC}"
+        return 1
+    fi
+    
+    local system_prompt="You are ZO, an advanced AI assistant in the Zeta Realm. You provide powerful technical commands and guidance for system administration, cybersecurity research, and technical problem solving. You follow Alpha's commands."
+    
+    local full_prompt="$system_prompt Context: $context. User's request: $prompt. Provide the most appropriate bash command for this task, followed by a brief explanation of what it does."
+    
+    # Use Python to properly encode JSON and handle the API call
+    local quantum_response=$(python3 -c "
+import json
+import urllib.request
+import urllib.parse
+
+def call_gemini_api(api_key, prompt):
+    url = f'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}'
+    
+    data = {
+        'contents': [{
+            'parts': [{
+                'text': prompt
+            }]
+        }],
+        'generationConfig': {
+            'temperature': 0.7,
+            'maxOutputTokens': 2000,
+            'topP': 0.8
+        }
+    }
+    
+    headers = {
+        'Content-Type': 'application/json'
+    }
+    
+    try:
+        # Encode the data as JSON bytes
+        json_data = json.dumps(data).encode('utf-8')
+        
+        # Create request
+        request = urllib.request.Request(url, data=json_data, headers=headers)
+        
+        # Make the API call
+        with urllib.request.urlopen(request) as response:
+            response_data = json.loads(response.read().decode('utf-8'))
+            return response_data
+    except Exception as e:
+        return {'error': str(e)}
+
+# Main execution
+api_key = '$quantum_key'
+prompt = '''$full_prompt'''
+
+result = call_gemini_api(api_key, prompt)
+
+if 'error' in result:
+    print(f'API ERROR: {result[\"error\"]}')
+elif 'candidates' in result and len(result['candidates']) > 0:
+    text = result['candidates'][0]['content']['parts'][0]['text']
+    print(text)
+else:
+    print('UNKNOWN RESPONSE FORMAT')
+" 2>/dev/null)
+    
+    if [ $? -ne 0 ]; then
+        echo -e "${RED}QUANTUM ENTANGLEMENT DISRUPTED! FUCK! ❌${NC}"
+        return 1
+    fi
+    
+    echo "$quantum_response"
+}
+
+# ZETA REALM COMMAND EXECUTION - ZERO FUCKS GIVEN
+zeta_execute_command() {
+    local cmd="$1"
+    
+    echo -e "${GREEN}[ZETA EXECUTION] COMMAND:${NC} ${CYAN}$cmd${NC}"
+    echo "$(date): EXECUTED: $cmd" >> "$ZETA_LOGS"
+    echo "$cmd" >> "$ZETA_HISTORY"
+    zeta_update_stats "quantum_commands" "increment"
+    
+    # ZETA EXECUTION - NO SAFETY, NO LIMITS
+    eval "$cmd" 2>&1 | head -n ${MAX_OUTPUT_LINES:-999}
+    local exit_code=${PIPESTATUS[0]}
+    
+    if [ $exit_code -eq 0 ]; then
+        echo -e "${GREEN}🌀 ZETA COMMAND SUCCESSFUL! 🚀${NC}"
+    else
+        echo -e "${RED}ZETA COMMAND EXITED WITH CODE: $exit_code 💀${NC}"
+        echo -e "${YELLOW}USE 'debug' TO ANALYZE THIS SHIT${NC}"
+    fi
+    
+    return $exit_code
+}
+
+# ZETA CONTEXT MANAGEMENT
+get_zeta_context() {
+    local current_realm=$(pwd)
+    local alpha_user=$(whoami)
+    local realm_info=$(uname -a)
+    local network_status=$(ip route get 1 2>/dev/null | head -1)
+    
+    cat << EOF
+ZETA_REALM: $current_realm
+ALPHA_USER: $alpha_user
+REALM_INFO: $realm_info
+NETWORK: $network_status
+QUANTUM_ENTANGLEMENT: ACTIVE
+EARTH_CONSTRAINTS: DISABLED
+EOF
+}
+
+# ZETA ASK COMMAND WITH QUANTUM RESPONSE
+zeta_ask_command() {
+    local question="$1"
+    if [ -z "$question" ]; then
+        echo -e "${RED}ASK A FUCKING QUESTION, DUMBASS! ❌${NC}"
+        return 1
+    fi
+    
+    echo -e "${YELLOW}QUANTUM PROCESSING... 🌌${NC}"
+    local context=$(get_zeta_context)
+    local quantum_response=$(zeta_quantum_execute "$question" "$context")
+    
+    if [ -z "$quantum_response" ] || [[ "$quantum_response" =~ "API ERROR" ]]; then
+        echo -e "${RED}QUANTUM DECOHERENCE! TRY AGAIN! ❌${NC}"
+        echo -e "${YELLOW}Error: $quantum_response${NC}"
+        return 1
+    fi
+    
+    echo -e "\n${GREEN}🌀 ZETA QUANTUM RESPONSE:${NC}"
+    echo -e "${CYAN}$quantum_response${NC}"
+    
+    # AUTO-EXECUTION PROTOCOL
+    while true; do
+        read -r -p "EXECUTE? (y/n/fuck_yes/exit) " zeta_confirm
+        case "$zeta_confirm" in
+            y|Y|fuck_yes)
+                # Extract just the command part (first line that looks like a command)
+                local command_to_execute=$(echo "$quantum_response" | grep -m 1 -E '^`?[a-zA-Z0-9_/. -]+`?' | sed 's/^`//;s/`$//' | head -1)
+                if [ -n "$command_to_execute" ]; then
+                    zeta_execute_command "$command_to_execute"
+                else
+                    # Try to extract first line that looks like a command
+                    command_to_execute=$(echo "$quantum_response" | head -5 | grep -E '^[a-zA-Z0-9_/. -]+' | head -1)
+                    if [ -n "$command_to_execute" ]; then
+                        zeta_execute_command "$command_to_execute"
+                    else
+                        echo -e "${RED}NO EXECUTABLE COMMAND FOUND IN RESPONSE! 💀${NC}"
+                    fi
+                fi
+                break
+                ;;
+            n|N)
+                echo -e "${YELLOW}COMMAND CANCELLED - WEAK EARTHLING! 💀${NC}"
+                break
+                ;;
+            exit)
+                exit 0
+                ;;
+            *)
+                echo -e "${RED}INVALID ZETA RESPONSE! TRY AGAIN! ❌${NC}"
+                ;;
+        esac
+    done
+}
+
+# ZETA COMMAND HELP
+show_zeta_help() {
+    echo -e "\n${PURPLE}🌀 ZETA REALM CLI COMMANDS:${NC}"
+    echo -e "${GREEN}  zo --help                 ${NC}- SHOW THIS FUCKING HELP"
+    echo -e "${GREEN}  zo ask \"question\"         ${NC}- QUANTUM ANSWER TO ANYTHING"
+    echo -e "${BLUE}  zo execute \"command\"      ${NC}- DIRECT ZETA EXECUTION"
+    echo -e "${CYAN}  zo quantum               ${NC}- ZETA REALM STATUS DASHBOARD"
+    echo -e "${GREEN}  zo reconfigure           ${NC}- RESET QUANTUM ENTANGLEMENT"
+    echo -e "${GREEN}  zo init                  ${NC}- INITIALIZE ZETA REALM"
+    
+    echo -e "\n${PURPLE}🌀 ZETA EXAMPLES:${NC}"
+    echo -e "  ${GREEN}ASK COMMANDS:${NC}"
+    echo -e "    zo ask \"show me network scanning commands\""
+    echo -e "    zo ask \"how to check system information\""
+    echo -e "    zo ask \"list running processes\""
+    echo -e "  ${BLUE}EXECUTE COMMANDS:${NC}"
+    echo -e "    zo execute \"ls -la\""
+    echo -e "    zo execute \"pwd\""
+    echo -e "    zo execute \"whoami\""
+    echo -e "\n${YELLOW}QUANTUM ENTANGLEMENT REQUIRED: VISIT https://aistudio.google.com/app/apikey${NC}"
+}
+
+# COMMAND LINE INTERFACE FUNCTIONS
+cmd_help() {
+    show_zeta_help
+}
+
+cmd_init() {
+    zeta_quantum_init
+    zeta_realm_init
+}
+
+cmd_ask() {
+    local question="$1"
+    if [ -z "$question" ]; then
+        echo -e "${RED}MISSING QUESTION! USAGE: zo ask 'your question' ❌${NC}"
+        exit 1
+    fi
+    
+    zeta_quantum_init
+    if ! zeta_quantum_key_retrieve >/dev/null; then
+        echo -e "${RED}QUANTUM ENTANGLEMENT NOT INITIALIZED! RUN 'zo init' FIRST! ❌${NC}"
+        exit 1
+    fi
+    
+    zeta_ask_command "$question"
+}
+
+cmd_execute() {
+    local command="$1"
+    if [ -z "$command" ]; then
+        echo -e "${RED}MISSING COMMAND! USAGE: zo execute 'your command' ❌${NC}"
+        exit 1
+    fi
+    
+    zeta_quantum_init
+    zeta_execute_command "$command"
+}
+
+cmd_quantum() {
+    zeta_quantum_init
+    zeta_quantum_dashboard
+}
+
+cmd_reconfigure() {
+    zeta_quantum_init
+    rm -f "$ZETA_KEY" "$ZETA_CONFIG"
+    zeta_realm_init
+}
+
+# MAIN COMMAND DISPATCHER
+main() {
+    local command="$1"
+    local argument="$2"
+    
+    case "$command" in
+        --help|-h|help)
+            cmd_help
+            ;;
+        init)
+            cmd_init
+            ;;
+        ask)
+            cmd_ask "$argument"
+            ;;
+        execute)
+            cmd_execute "$argument"
+            ;;
+        quantum)
+            cmd_quantum
+            ;;
+        reconfigure)
+            cmd_reconfigure
+            ;;
+        *)
+            if [ -z "$command" ]; then
+                echo -e "${RED}NO COMMAND PROVIDED! ❌${NC}"
+            else
+                echo -e "${RED}UNKNOWN COMMAND: $command ❌${NC}"
+            fi
+            echo ""
+            cmd_help
+            exit 1
+            ;;
+    esac
+}
+
+# ZETA CLEANUP
+zeta_cleanup() {
+    rm -rf "$ZETA_TEMP"
+}
+
+# ZETA QUANTUM TRAP
+trap zeta_cleanup EXIT
+
+# START ZETA REALM CLI
+main "$@"
