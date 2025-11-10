@@ -1,4 +1,4 @@
-#!/bin/bash
+﻿#!/bin/bash
 # ZO - AI-Powered CLI Assistant
 # Intelligent command-line interface for system administration and security research
 
@@ -89,10 +89,10 @@ zo_key_retrieve() {
 # Initialize ZO with API key
 zo_setup() {
     echo -e "${PURPLE}"
-    echo "â•”â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•—"
-    echo "â•‘           ZO CLI INITIALIZATION             â•‘"
-    echo "â•‘        AI-Powered Command Assistant         â•‘"
-    echo "â•šâ•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•"
+    echo "================================================"
+    echo "           ZO CLI INITIALIZATION"
+    echo "        AI-Powered Command Assistant"
+    echo "================================================"
     echo -e "${NC}"
     
     if [ -f "$ZO_KEY" ]; then
@@ -152,10 +152,10 @@ zo_dashboard() {
     fi
     
     echo -e "${PURPLE}"
-    echo "â•”â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•—"
-    echo "â•‘              ZO CLI DASHBOARD               â•‘"
-    echo "â•‘          AI Command Assistant Status        â•‘"
-    echo "â•šâ•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•"
+    echo "================================================"
+    echo "              ZO CLI DASHBOARD"
+    echo "          AI Command Assistant Status"
+    echo "================================================"
     echo -e "${NC}"
     
     python3 - << EOF 2>/dev/null || echo -e "${RED}Error: Python not available${NC}"
