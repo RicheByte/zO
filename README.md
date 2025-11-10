@@ -8,6 +8,8 @@
 > **Intelligent command-line assistant for system administration and security research**  
 > **Powered by Google's Gemini AI**
 
+![Video](/assets/video.gif)
+
 ##  Overview
 
 ZO is an intelligent CLI assistant that helps with system administration, cybersecurity research, and technical problem-solving. It provides AI-powered command suggestions, explanations, and guidance for various technical tasks, making complex operations more accessible and safer.
