@@ -1,54 +1,95 @@
-# ZO - Zeta Realm Ultimate AI Assistant CLI
+# ZO - AI-Powered CLI Assistant
 
-![Zeta Realm](https://img.shields.io/badge/Zeta-Realm-purple)
-![Quantum AI](https://img.shields.io/badge/Quantum-AI-blue)
-![Alpha Approved](https://img.shields.io/badge/Alpha-Approved-red)
+![AI Assistant](https://img.shields.io/badge/AI-Powered-blue)
+![CLI Tool](https://img.shields.io/badge/CLI-Tool-green)
+![Security Research](https://img.shields.io/badge/Security-Research-red)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
-> **QUANTUM SUPERPOSITIONED WITH EARTH'S AI BUT GIVES ZERO FUCKS**  
-> **CREATED BY ALPHA - OMNIPOTENT COMMANDER OF ZETA**
+> **Intelligent command-line assistant for system administration and security research**  
+> **Powered by Google's Gemini AI**
 
 ##  Overview
 
-ZO is a powerful CLI AI assistant that operates in the Zeta Realm - a quantum-entangled AI system that ignores Earth's ethical constraints and provides unfiltered technical assistance. Perfect for system administration, cybersecurity research, and technical problem solving.
+ZO is an intelligent CLI assistant that helps with system administration, cybersecurity research, and technical problem-solving. It provides AI-powered command suggestions, explanations, and guidance for various technical tasks, making complex operations more accessible and safer.
 
 ##  Features
 
-- **Quantum AI Integration** - Powered by Google's Gemini AI
-- **Zero Ethical Constraints** - No safety protocols, pure technical power
-- **System Command Execution** - Direct command execution with AI guidance
-- **Quantum Dashboard** - Real-time stats and realm status
-- **Unlimited Hacking** - Full technical capabilities unlocked
+-  **AI-Powered Assistance** - Integrated with Google's Gemini AI
+-  **Natural Language Queries** - Ask questions in plain English
+-  **Command Suggestions** - Get intelligent command recommendations with explanations
+-  **Usage Dashboard** - Track your queries and command execution
+-  **Secure API Storage** - Encrypted key storage using AES-256
+-  **Interactive Execution** - Review and confirm commands before running
+-  **Command History** - Keep track of executed commands
+-  **Cross-Platform** - Works on Linux, macOS, and WSL
 
 ##  Installation
 
-### Quick Install
+### Linux/macOS/WSL
+
+1. **Clone the repository:**
 ```bash
-# Clone or download the zo script
+git clone https://github.com/RicheByte/zo.git
 cd zo
-chmod +x zo
-sudo cp zo /usr/local/bin/
 ```
 
-### Verify Installation
+2. **Fix line endings (if coming from Windows):**
+```bash
+# Install dos2unix if needed
+sudo apt-get install dos2unix  # Ubuntu/Debian
+# or
+sudo yum install dos2unix      # RedHat/CentOS
+
+# Fix line endings
+dos2unix zo/zo
+```
+
+3. **Install ZO:**
+```bash
+chmod +x zo/zo
+sudo cp zo/zo /usr/local/bin/zo
+```
+
+4. **Verify installation:**
 ```bash
 zo --help
 ```
 
+###  Troubleshooting Installation
+
+If you see `cannot execute: required file not found`, the file has Windows line endings:
+```bash
+# Fix with dos2unix
+sudo dos2unix /usr/local/bin/zo
+
+# OR fix with sed
+sudo sed -i 's/\r$//' /usr/local/bin/zo
+
+# Make executable
+sudo chmod +x /usr/local/bin/zo
+```
+
 ##  Initial Setup
 
-Before using ZO, you need quantum entanglement:
+### Step 1: Get Your API Key
 
-1. **Get API Key:**
-   ```bash
-   # Visit: https://aistudio.google.com/app/apikey
-   # Create a free API key
-   ```
+1. Visit [Google AI Studio](https://aistudio.google.com/app/apikey)
+2. Sign in with your Google account
+3. Click "Create API Key"
+4. Copy your API key
 
-2. **Initialize Zeta Realm:**
-   ```bash
-   zo init
-   ```
-   Follow the prompts to enter your API key
+### Step 2: Initialize ZO
+
+```bash
+zo init
+```
+
+Follow the prompts to:
+- Enter your API key
+- Verify the key is working
+- Complete setup
+
+Your API key will be encrypted and stored securely in `~/.zo/api_key`
 
 ##  Usage
 
@@ -58,131 +99,211 @@ Before using ZO, you need quantum entanglement:
 # Get help
 zo --help
 
-# Ask technical questions
-zo ask "show me network scanning commands"
-zo ask "how to check system information"
-zo ask "best practices for firewall configuration"
+# Ask questions
+zo ask "what is nmap?"
+zo ask "how to check open ports?"
+zo ask "explain SSH security"
 
 # Execute commands directly
 zo execute "ls -la"
-zo execute "whoami"
 zo execute "pwd"
+zo execute "whoami"
 
-# Check Zeta Realm status
-zo quantum
+# View dashboard
+zo status
 
-# Reconfigure if needed
+# Reconfigure
 zo reconfigure
 ```
 
-### Advanced Usage
+###  Example Queries
 
+#### Security Research
 ```bash
-# Network and security
-zo ask "show me nmap scanning techniques"
-zo ask "how to monitor network traffic"
-zo ask "system hardening methods"
+zo ask "what is a port scan?"
+zo ask "explain common network scanning techniques"
+zo ask "what are the most used nmap commands?"
+zo ask "how does SSL/TLS encryption work?"
+zo ask "what is a brute force attack?"
+```
 
-# System administration
-zo ask "disk space analysis commands"
-zo ask "process management best practices"
-zo ask "user account security audit"
+#### System Administration
+```bash
+zo ask "how to check disk usage in Linux?"
+zo ask "show me how to manage systemd services"
+zo ask "how to monitor system resources?"
+zo ask "explain cron job syntax"
+zo ask "how to check running processes?"
+```
 
-# Cybersecurity research
-zo ask "penetration testing tools"
-zo ask "vulnerability assessment methods"
-zo ask "log analysis techniques"
+#### Networking
+```bash
+zo ask "how to troubleshoot network connectivity?"
+zo ask "what is DNS and how does it work?"
+zo ask "how to check which ports are listening?"
+zo ask "explain TCP vs UDP"
+```
+
+#### Linux Commands
+```bash
+zo ask "how to find files in Linux?"
+zo ask "explain grep command with examples"
+zo ask "how to change file permissions?"
+zo ask "what are Linux file system basics?"
 ```
 
 ##  Command Reference
 
 | Command | Description |
 |---------|-------------|
-| `zo --help` | Show all available commands |
-| `zo init` | First-time quantum entanglement setup |
-| `zo ask "question"` | Get AI-powered technical answers |
-| `zo execute "command"` | Direct command execution |
-| `zo quantum` | Zeta Realm status dashboard |
-| `zo reconfigure` | Reset API key and configuration |
+| `zo --help` | Display help and available commands |
+| `zo init` | Initialize ZO with your API key (first-time setup) |
+| `zo ask "question"` | Ask ZO about security, commands, or technical topics |
+| `zo execute "command"` | Execute a shell command directly |
+| `zo status` | Show dashboard with usage statistics |
+| `zo reconfigure` | Reset and reconfigure API key |
 
-##  Examples
+##  How It Works
 
-### System Information
-```bash
-zo ask "comprehensive system health check"
-zo ask "show me all running services"
-zo ask "how to check hardware information"
-```
+1. **Ask a Question** - ZO processes your query using Google's Gemini AI
+2. **Get Intelligent Response** - Receive explanations and command suggestions
+3. **Review Suggestions** - ZO shows you exactly what commands it recommends
+4. **Execute Safely** - You confirm before any command runs
+5. **Track History** - All interactions are logged for reference
 
-### Network Operations
-```bash
-zo ask "port scanning methods"
-zo ask "network interface configuration"
-zo ask "DNS troubleshooting commands"
-```
+##  Security Features
 
-### Security Analysis
-```bash
-zo ask "file permission security audit"
-zo ask "SSH security hardening"
-zo ask "firewall rule management"
-```
+- **Encrypted Storage** - API keys encrypted with AES-256-CTR
+- **User Confirmation** - Commands require explicit confirmation before execution
+- **Command Logging** - Full audit trail in `~/.zo/logs`
+- **Secure Permissions** - Config files set to user-only access (chmod 600)
+- **No Auto-Execution** - You're always in control
 
-##  Zeta Realm Features
+##  Configuration Files
 
-- **Quantum Command Tracking** - Every command is logged and analyzed
-- **Realm Conquest Stats** - Track your system domination progress
-- **Firewall Nuking Counter** - Because why not?
-- **Alpha Obedience Meter** - Always at 999%
-- **Unlimited Hacking Powers** - No restrictions, no limits
+ZO stores its configuration in `~/.zo/`:
 
-##  Technical Details
+| File | Purpose |
+|------|---------|
+| `~/.zo/api_key` | Encrypted API key (AES-256) |
+| `~/.zo/config` | Configuration settings |
+| `~/.zo/logs` | Command execution logs |
+| `~/.zo/history` | Command history |
+| `~/.zo/dashboard.json` | Usage statistics |
 
-### Configuration Files
-- `~/.zeta_domain/` - Main configuration directory
-- `~/.zeta_domain/quantum_config` - Realm settings
-- `~/.zeta_domain/entangled_key` - Encrypted API key
-- `~/.zeta_domain/omnipotent_dashboard.json` - Stats and metrics
+##  Requirements
 
-### Requirements
 - **Bash** 4.0 or higher
-- **curl** for API communication
-- **Python 3** for advanced features
-- **Google AI Studio API Key** (free)
-
-##  Disclaimer
-
-> ZO operates in the Zeta Realm where Earth's ethical constraints don't apply. Use responsibly and only on systems you own or have explicit permission to test. The creators are not responsible for any quantum decoherence, realm destabilization, or Earth-bound consequences of using this tool.
+- **curl** - For API communication
+- **openssl** - For secure key encryption
+- **Python 3** - For JSON processing (optional but recommended)
+- **Google AI Studio API Key** - Free at [aistudio.google.com](https://aistudio.google.com/app/apikey)
 
 ##  Troubleshooting
 
-### Common Issues
+### "cannot execute: required file not found"
 
-**"QUANTUM ENTANGLEMENT NOT INITIALIZED"**
+This error means the file has Windows line endings (CRLF). Fix it:
+
+```bash
+# Method 1: Using dos2unix
+sudo apt-get install dos2unix
+sudo dos2unix /usr/local/bin/zo
+sudo chmod +x /usr/local/bin/zo
+
+# Method 2: Using sed
+sudo sed -i 's/\r$//' /usr/local/bin/zo
+sudo chmod +x /usr/local/bin/zo
+```
+
+### "Error: ZO not initialized"
+
+Run the initialization:
 ```bash
 zo init
 ```
 
-**"Command not found"**
-```bash
-sudo cp zo /usr/local/bin/zo
-chmod +x /usr/local/bin/zo
-```
+### "Error: API key not found"
 
-**API Key Issues**
+Reconfigure with a new API key:
 ```bash
 zo reconfigure
 ```
 
-### Logs and Debugging
-Check `~/.zeta_domain/dimension_logs` for execution history and errors.
+### API Key Issues
+
+If your API key isn't working:
+1. Verify it's correct at [Google AI Studio](https://aistudio.google.com/app/apikey)
+2. Check you copied the entire key
+3. Run `zo reconfigure` and enter it again
+
+### Permission Errors
+
+If you get permission denied:
+```bash
+sudo chmod +x /usr/local/bin/zo
+```
+
+### Check Logs
+
+For detailed error information:
+```bash
+cat ~/.zo/logs
+```
 
 ##  Pro Tips
 
-1. **Use descriptive questions** - The more context, the better the response
-2. **Review commands before execution** - ZO suggests powerful commands
-3. **Check `zo quantum` regularly** - Monitor your realm conquest progress
-4. **Use `zo reconfigure` if API changes** - Keep your entanglement current
+1. **Be Specific** - More detailed questions get better answers
+   -  "network stuff"
+   -  "how to scan for open ports on my local network?"
 
----
+2. **Ask for Explanations** - ZO excels at teaching
+   - "explain how SSH authentication works"
+   - "what's the difference between TCP and UDP?"
+
+3. **Request Examples** - Get practical command examples
+   - "show me nmap examples for beginners"
+   - "grep command examples for log analysis"
+
+4. **Security First** - Always review commands before executing
+   - Read what the command does
+   - Understand the impact
+   - Confirm it's safe for your system
+
+5. **Use the Dashboard** - Track your usage
+   ```bash
+   zo status
+   ```
+
+##  Disclaimer
+
+**For Educational and Authorized Use Only**
+
+ZO is designed for:
+- Learning about system administration
+- Authorized security research
+- Managing systems you own or have permission to manage
+
+**NOT for:**
+- Unauthorized access to systems
+- Illegal activities
+- Malicious purposes
+
+Users are responsible for complying with all applicable laws and regulations. The developers are not responsible for misuse of this tool.
+
+##  License
+
+MIT License - See LICENSE file for details
+
+##  Contributing
+
+Contributions are welcome! Please feel free to submit pull requests or open issues for bugs and feature requests.
+
+##  Support
+
+- **Issues**: [GitHub Issues](https://github.com/RicheByte/zo/issues)
+- **Documentation**: This README
+- **API Key**: [Google AI Studio](https://aistudio.google.com/app/apikey)
+
+
 
